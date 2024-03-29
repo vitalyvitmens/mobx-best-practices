@@ -1,15 +1,9 @@
 import { Link } from 'react-router-dom'
-import { logout } from '../../ducks/auth'
-import { useAppDispatch } from '../../ducks/hooks'
+import { authStore } from '../../store/authStore'
 
 export const Logout = () => {
-  const dispatch = useAppDispatch()
-  const onLogout = () => {
-    dispatch(logout())
-  }
-
   return (
-    <Link className="logout" to="#" onClick={onLogout}>
+    <Link className="logout" to="#" onClick={authStore.logout}>
       <i className="fa fa-sign-out fa-lg" aria-hidden="true"></i>
     </Link>
   )

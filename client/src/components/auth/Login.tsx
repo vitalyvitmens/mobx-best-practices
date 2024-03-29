@@ -1,10 +1,8 @@
 import { FormEventHandler } from 'react'
-import { useAppDispatch, useAppSelector } from '../../ducks/hooks'
-import { login as loginAction } from '../../ducks/auth'
+import { authStore } from '../../store/authStore'
 
 export const Login = () => {
-  const err = useAppSelector((store) => store.auth.error)
-  const dispatch = useAppDispatch()
+  const err = authStore.error
 
   const onLogin: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
@@ -24,12 +22,10 @@ export const Login = () => {
       return
     }
 
-    dispatch(
-      loginAction({
-        login: login.toString(),
-        password: password.toString(),
-      })
-    )
+    authStore.login({
+      login: login.toString(),
+      password: password.toString(),
+    })
   }
 
   return (

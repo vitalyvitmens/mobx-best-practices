@@ -4,13 +4,11 @@ import { Todos } from './components/todos/Todos'
 import { NotFound } from './components/not-found/NotFound'
 import { ProtectedRoutes } from './ProtectedRoutes'
 import { useEffect } from 'react'
-import { useAppDispatch } from './ducks/hooks'
-import { checkAuth } from './ducks/auth'
+import { authStore } from './store/authStore'
 
 function App() {
-  const dispatch = useAppDispatch()
   useEffect(() => {
-    dispatch(checkAuth())
+    authStore.checkAuth()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
