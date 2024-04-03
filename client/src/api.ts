@@ -59,7 +59,7 @@ class Api {
       result = await this.fetch(url, config)
     }
 
-    return result.json()
+    return result
   }
 
   async fetch(url: string, config?: RequestInit) {
